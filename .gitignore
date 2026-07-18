@@ -1,0 +1,29 @@
+# Dependency directories (Never commit this, it's massive)
+node_modules/
+jspm_packages/
+
+# Sensitive Environment Variables (Protects your credentials)
+.env
+.env.local
+.env.*.local
+
+# Playwright / Testing reports and cache
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# Optional: Production build output (if you add build steps later)
+dist/
+build/
