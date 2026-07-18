@@ -4,8 +4,6 @@ import stealth from "puppeteer-extra-plugin-stealth";
 
 const app = express();
 const PORT = 3000;
-const ROSE_LASSI = "rose-lassi"
-const BUTTERMILK = "buttermilk"
 
 chromium.use(stealth);
 
@@ -55,10 +53,16 @@ app.get("/api/stock/:productName", async (req, res) => {
         const productName = product.name;
         const productPrice = product.price;
         const productAvailability = product.available;
+        const last_available_date = new Intl.DateTimeFormat("en-IN", {
+            dateStyle: "medium",
+            timeStyle: "short"
+        }).format(new Date(product.updated_on));
+
         res.json({
             name: productName,
             price: productPrice,
-            availability: productAvailability
+            availability: productAvailability,
+            last_available_at: last_available_date
         })
     } else {
         res.status(404).json({ error: "Error fetching data, check the URL" })
